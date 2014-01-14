@@ -33,14 +33,20 @@ module ::Guard
     end
 
     def get_test_files(paths)
-      # TODO make this more general
+      # TODO make this more general (go deeper)
       test_files = paths.reject { |path| path.match %r{^tests/} }.inject( [] ) do |test_files, path|
+        base = Dir.getwd
         dir = File.dirname( path )
         dirs = dir.split( '/' )
         filename = File.basename( path )
+        puts filename
         [
           "tests/#{dir}/test_#{filename}",
+          "tests/test_" + filename,
           "tests/test_" + ( dirs ).join( '_' ) + '_' +  filename,
+          base + "/tests/#{dir}/test_#{filename}",
+          base + "/tests/test_" +  filename,
+          base + "/tests/test_" + ( dirs ).join( '_' ) + '_' +  filename,
           "#{dir}/tests/test_#{filename}",
           "#{dir}/test_#{filename}"
         ].select do |pattern|
