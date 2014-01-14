@@ -1,6 +1,6 @@
 import unittest
 
-from python_guard.a import bar
+from src.a import bar
 
 
 class TestBar(unittest.TestCase):
