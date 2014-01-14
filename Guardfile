@@ -14,8 +14,7 @@ module ::Guard
     def run_all
       # NOTE althought this could be cached
       # needs to update when files are created
-      test_files = get_test_files([Dir.getwd])
- 
+      test_files = get_test_files([Dir.getwd]) 
       output = `py.test -q #{test_files.join(' ')}`
       puts output
  
@@ -51,7 +50,6 @@ module ::Guard
       test_files += paths.grep( %r{^tests/} )
     end
 
-
     def send_notification(output, prefix="Test: ")
       # Send out a notification, via Growl (mac) or libnotify (linux).
       result_match = output.match( /\n.*seconds$/ )
@@ -61,16 +59,11 @@ module ::Guard
       ::Guard::Notifier.notify( result,
                                 :title => prefix + project_name, 
                                 :image => image )
-
     end
-
-
-
   end
 end
  
 guard :py_test do
   watch( %r{.*.py$} )
   watch( %r{^tests/.*.py$} )
-  watch( 'tests/conftest.py' ) { Dir['tests/**/test*.py'] }
 end

@@ -2,7 +2,7 @@
 
 ### Setup
 
-- Copy the Gemfile and Guardfile into your python project directory.
+- Copy the `Gemfile` and `Guardfile` into your python project directory.
 - Bundle install (this requires ruby, the best method is to install via rvm)
 - Run guard `bundle exec guard` (some text editors offer a Guard plugin)
 
