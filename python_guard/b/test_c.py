@@ -1,6 +1,6 @@
 import unittest
 
-from src.b.c import fib
+from python_guard.b.c import fib
 
 
 class TestFib(unittest.TestCase):

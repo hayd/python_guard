@@ -55,7 +55,7 @@ module ::Guard
       result_match = output.match( /\n.*seconds$/ )
       result = result_match ? result_match[0] : "unknown failure"
       image  = result.match( /fail/ ) ? :failed : :success
-      project_name = File.split(Dir.getwd)[-1]
+      project_name = File.basename(Dir.getwd)
       ::Guard::Notifier.notify( result,
                                 :title => prefix + project_name, 
                                 :image => image )
